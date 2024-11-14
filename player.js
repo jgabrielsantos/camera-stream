@@ -1,4 +1,4 @@
-const { components, pipelines, utils } = window.mediaStreamLibrary
+const { components, pipelines, utils } = require('media-stream-library')
 const d3 = window.d3
 
 // force auth
