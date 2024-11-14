@@ -52,26 +52,26 @@ const play = (host, encoding) => {
   })
 
   const svg = d3.select('svg')
-  // group = svg.append('g')
-  // const path = group
-  //   .append('path')
-  //   .attr('fill', 'none')
-  //   .attr('stroke', '#fc3')
-  //   .attr('stroke-linejoin', 'round')
-  //   .attr('stroke-linecap', 'round')
-  //   .attr('stroke-width', 1.5)
+  group = svg.append('g')
+  const path = group
+    .append('path')
+    .attr('fill', 'none')
+    .attr('stroke', '#fc3')
+    .attr('stroke-linejoin', 'round')
+    .attr('stroke-linecap', 'round')
+    .attr('stroke-width', 1.5)
   const { width: svgWidth, height: svgHeight } = svg
     .node()
     .getBoundingClientRect()
 
-  // const x = d3.scaleLinear().domain([0, 59]).rangeRound([0, svgWidth])
+  const x = d3.scaleLinear().domain([0, 59]).rangeRound([0, svgWidth])
   let maxBytes = 0
-  // let y = d3.scaleLinear().domain([0, maxBytes]).rangeRound([svgHeight, 0])
-  // const line = d3
-  //   .line()
-  //   .x((d, i) => x(i))
-  //   .y((d) => y(d))
-  //   .curve(d3.curveStep)
+  let y = d3.scaleLinear().domain([0, maxBytes]).rangeRound([svgHeight, 0])
+  const line = d3
+    .line()
+    .x((d, i) => x(i))
+    .y((d) => y(d))
+    .curve(d3.curveStep)
 
   const draw = (msg) => {
     data.push(msg.data.length)
@@ -81,9 +81,9 @@ const play = (host, encoding) => {
     }
     if (data.length > 60) {
       data.shift()
-      // window.requestAnimationFrame(() => path.attr('d', line(data)))
+      window.requestAnimationFrame(() => path.attr('d', line(data)))
     }
-    // console.log('sync', new Date(msg.ntpTimestamp), msg.data.length)
+    console.log('sync', new Date(msg.ntpTimestamp), msg.data.length)
   }
   const scheduler = new utils.Scheduler(pipeline, draw)
 
