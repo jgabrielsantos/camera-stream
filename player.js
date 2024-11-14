@@ -1,3 +1,4 @@
+import { components, pipelines, utils } from 'media-stream-library'
 const { components, pipelines, utils } = require('media-stream-library')
 const d3 = window.d3
 
