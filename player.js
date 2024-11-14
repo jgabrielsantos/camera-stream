@@ -63,14 +63,14 @@ const play = (host, encoding) => {
     .node()
     .getBoundingClientRect()
 
-  const x = d3.scaleLinear().domain([0, 59]).rangeRound([0, svgWidth])
+  // const x = d3.scaleLinear().domain([0, 59]).rangeRound([0, svgWidth])
   let maxBytes = 0
-  let y = d3.scaleLinear().domain([0, maxBytes]).rangeRound([svgHeight, 0])
-  const line = d3
-    .line()
-    .x((d, i) => x(i))
-    .y((d) => y(d))
-    .curve(d3.curveStep)
+  // let y = d3.scaleLinear().domain([0, maxBytes]).rangeRound([svgHeight, 0])
+  // const line = d3
+  //   .line()
+  //   .x((d, i) => x(i))
+  //   .y((d) => y(d))
+  //   .curve(d3.curveStep)
 
   const draw = (msg) => {
     data.push(msg.data.length)
